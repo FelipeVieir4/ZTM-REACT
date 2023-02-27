@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import {
@@ -19,8 +18,6 @@ const SingnUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  console.log(formFields);
-
   const resetFormField = () => {
     setFormFields(defaultFormFields);
   };
@@ -28,7 +25,7 @@ const SingnUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       return alert("Passwords do not match");
     }
 
