@@ -3,6 +3,7 @@ import "./cart-icon.styles.scss";
 import { useContext } from "react";
 import { CartDropdownContext } from "../../contexts/cart-dropdown.context";
 
+
 const CartIcon = () => {
   const { setIsOpen, isOpen, cartCount } = useContext(CartDropdownContext);
 

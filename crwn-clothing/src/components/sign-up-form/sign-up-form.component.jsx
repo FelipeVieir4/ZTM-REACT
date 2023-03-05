@@ -6,6 +6,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import "./sign-up.styles.scss";
 import Button from "../Button/Button.component";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
   displayName: "",
@@ -14,10 +15,12 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
+
+
 const SingnUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
-
+  const navigate = useNavigate();
   const resetFormField = () => {
     setFormFields(defaultFormFields);
   };
@@ -37,6 +40,7 @@ const SingnUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
 
       resetFormField();
+      navigate("shop")
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         return alert("Cannot create user, email already in use");
