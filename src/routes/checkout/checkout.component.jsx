@@ -4,7 +4,7 @@ import { CartDropdownContext } from "../../contexts/cart-dropdown.context";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 const CheckOut = () => {
-  const { setIsOpen, cartItems, cartPrice } = useContext(CartDropdownContext);
+  const { setIsOpen, cartItems, cartTotal } = useContext(CartDropdownContext);
 
   //once the ChecOut render, function will set cart off. then icon will handle the state.
   useEffect(() => {
@@ -33,7 +33,7 @@ const CheckOut = () => {
       {cartItems.map((carItem) => {
         return <CheckoutItem key={carItem.id} cartItem={carItem} />;
       })}
-      <span className="total">Total: {cartPrice}</span>
+      <span className="total">Total: {cartTotal}</span>
     </div>
   );
 };
