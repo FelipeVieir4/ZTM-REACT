@@ -1,15 +1,15 @@
 import "./checkout.styles.scss";
-import { useContext, useEffect } from "react";
-import { CartDropdownContext } from "../../contexts/cart-dropdown.context";
+import { useEffect } from "react";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import { useSelector } from "react-redux";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cart.selector";
 
 const CheckOut = () => {
-  const { setIsOpen, cartItems, cartTotal } = useContext(CartDropdownContext);
-
-  //once the ChecOut render, function will set cart off. then icon will handle the state.
-  useEffect(() => {
-    setIsOpen(false);
-  }, []);
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
 
   return (
     <div className="checkout-container">
